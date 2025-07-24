@@ -137,8 +137,8 @@ export default function HeroSection() {
 
         {/* Product Carousel */}
         <div className="product-carousel relative max-w-4xl mx-auto">
-          <div className="glass rounded-3xl p-8 md:p-12 shadow-2xl">
-            <div className="flex flex-col lg:flex-row items-center gap-8">
+          <div className="glass rounded-3xl p-6 sm:p-8 md:p-12 shadow-2xl">
+            <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8">
               {/* Product Info */}
               <div className="flex-1 text-center lg:text-left">
                 <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
@@ -157,10 +157,10 @@ export default function HeroSection() {
                 </p>
 
                 {/* Features */}
-                <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                   {currentProductData.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-[var(--teal-start)]" fill="currentColor" />
+                      <Star className="w-4 h-4 text-[var(--teal-start)] flex-shrink-0" fill="currentColor" />
                       <span className="text-sm text-[var(--text-secondary)]">{feature}</span>
                     </div>
                   ))}
@@ -183,20 +183,20 @@ export default function HeroSection() {
                     }
                   }}
                   disabled={currentProductData.status === 'coming-soon'}
-                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 ${
+                  className={`inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-300 ${
                     currentProductData.status === 'coming-soon'
                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                       : 'gradient-teal text-white hover-lift hover:shadow-xl'
                   }`}
                 >
                   {currentProductData.status === 'coming-soon' ? 'Coming Soon' : 'Explore Now'}
-                  {currentProductData.status !== 'coming-soon' && <ExternalLink className="w-5 h-5" />}
+                  {currentProductData.status !== 'coming-soon' && <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />}
                 </button>
               </div>
 
               {/* Product Visual */}
-              <div className="flex-1 max-w-md">
-                <div className="relative w-full h-64 rounded-2xl shadow-lg animate-float overflow-hidden">
+              <div className="flex-1 w-full max-w-none sm:max-w-lg lg:max-w-md">
+                <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-64 rounded-2xl shadow-lg animate-float overflow-hidden">
                   {currentProductData.image ? (
                     <Image
                       src={currentProductData.image}
@@ -207,10 +207,10 @@ export default function HeroSection() {
                   ) : (
                     <div className={`w-full h-full bg-gradient-to-br ${currentProductData.color} flex items-center justify-center`}>
                       <div className="text-white text-center">
-                        <div className="text-6xl font-bold mb-2">
+                        <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2">
                           {currentProductData.name.charAt(0)}
                         </div>
-                        <div className="text-lg font-medium">
+                        <div className="text-base sm:text-lg font-medium px-2">
                           {currentProductData.name}
                         </div>
                       </div>
@@ -222,12 +222,12 @@ export default function HeroSection() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-center mt-8 gap-4">
+          <div className="flex items-center justify-center mt-6 sm:mt-8 gap-3 sm:gap-4">
             <button
               onClick={prevProduct}
-              className="p-3 glass rounded-full hover-lift transition-all duration-300"
+              className="p-2 sm:p-3 glass rounded-full hover-lift transition-all duration-300"
             >
-              <ChevronLeft className="w-6 h-6 text-[var(--primary-navy)]" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--primary-navy)]" />
             </button>
 
             {/* Dots Indicator */}
@@ -236,7 +236,7 @@ export default function HeroSection() {
                 <button
                   key={index}
                   onClick={() => goToProduct(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                     index === currentProduct
                       ? 'gradient-teal scale-125'
                       : 'bg-gray-300 hover:bg-gray-400'
@@ -247,9 +247,9 @@ export default function HeroSection() {
 
             <button
               onClick={nextProduct}
-              className="p-3 glass rounded-full hover-lift transition-all duration-300"
+              className="p-2 sm:p-3 glass rounded-full hover-lift transition-all duration-300"
             >
-              <ChevronRight className="w-6 h-6 text-[var(--primary-navy)]" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--primary-navy)]" />
             </button>
           </div>
         </div>
