@@ -6,6 +6,7 @@ import { CheckCircle, Mail, Phone, Calendar, ArrowRight, Home, ExternalLink } fr
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getCopyrightText } from '@/utils/copyright';
 
 export default function SuccessPage() {
 
@@ -223,7 +224,7 @@ export default function SuccessPage() {
             Transforming education through innovative technology solutions.
           </p>
           <p className="text-gray-400 text-sm mt-2">
-            © 2024 Learnwise Technologies. All rights reserved.
+            {getCopyrightText()}
           </p>
         </div>
       </footer>

@@ -5,6 +5,8 @@ import ProductShowcase from '@/components/products/ProductShowcase';
 import FeaturesSection from '@/components/features/FeaturesSection';
 import ContactSection from '@/components/contact/ContactSection';
 import Image from 'next/image';
+import Link from 'next/link';
+import { getCopyrightText } from '@/utils/copyright';
 
 export default function Home() {
   return (
@@ -47,7 +49,7 @@ export default function Home() {
                 Transforming education through innovative technology solutions that empower schools, teachers, and students worldwide.
               </p>
               <div className="text-gray-400 text-sm">
-                © 2024 Learnwise Technologies. All rights reserved.
+                {getCopyrightText()}
               </div>
             </div>
 
@@ -70,8 +72,8 @@ export default function Home() {
                 <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
                 <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                <li><Link href="/support" className="hover:text-white transition-colors">Support</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>

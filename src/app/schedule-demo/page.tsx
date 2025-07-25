@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -5,7 +6,6 @@ import { Calendar, Clock, User, Mail, Phone, Building, ArrowLeft, CheckCircle, L
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 interface DemoFormData {
   firstName: string;
@@ -34,7 +34,6 @@ const products = [
 ];
 
 export default function ScheduleDemoPage() {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState<DemoFormData>({
