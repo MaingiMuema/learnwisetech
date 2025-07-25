@@ -108,7 +108,7 @@ const products: Product[] = [
     status: 'coming-soon',
     icon: <Library className="w-8 h-8" />,
     stats: [
-      { label: 'Launch Date', value: 'Q2 2024' },
+      { label: 'Launch Date', value: 'Q1 2026' },
       { label: 'Pre-orders', value: '50+' },
       { label: 'Interest Level', value: 'High' }
     ],

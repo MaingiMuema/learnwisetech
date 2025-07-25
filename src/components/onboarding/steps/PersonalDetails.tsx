@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { User, Mail, Phone, Briefcase, Shield } from 'lucide-react';
-import { OnboardingData } from '../GetStartedFlow';
+import { OnboardingData } from '@/types/onboarding';
 
 interface PersonalDetailsProps {
   data: OnboardingData;

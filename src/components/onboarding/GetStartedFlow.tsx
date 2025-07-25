@@ -5,28 +5,12 @@ import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
+import { OnboardingData } from '@/types/onboarding';
 import UserTypeSelection from './steps/UserTypeSelection';
 import OrganizationDetails from './steps/OrganizationDetails';
 import ProductSelection from './steps/ProductSelection';
 import PersonalDetails from './steps/PersonalDetails';
 import ReviewAndSubmit from './steps/ReviewAndSubmit';
-
-export interface OnboardingData {
-  userType: 'school' | 'teacher' | 'student' | 'parent' | '';
-  organizationName: string;
-  organizationType: 'primary' | 'secondary' | 'university' | 'training' | '';
-  organizationSize: '1-50' | '51-200' | '201-500' | '500+' | '';
-  country: string;
-  region: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  position: string;
-  selectedProducts: string[];
-  interests: string[];
-  marketingConsent: boolean;
-}
 
 const steps = [
   { id: 1, title: 'User Type', description: 'Tell us about yourself' },
@@ -37,6 +21,7 @@ const steps = [
 ];
 
 export default function GetStartedFlow() {
+  const [mounted, setMounted] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<OnboardingData>({
@@ -57,13 +42,19 @@ export default function GetStartedFlow() {
   });
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     // Animate step indicator on mount and step changes
     gsap.fromTo(
       '.step-indicator',
       { scale: 0.8, opacity: 0 },
       { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1 }
     );
-  }, [currentStep]);
+  }, [currentStep, mounted]);
 
   const updateData = (newData: Partial<OnboardingData>) => {
     setData(prev => ({ ...prev, ...newData }));
@@ -144,6 +135,18 @@ export default function GetStartedFlow() {
     }
   };
 
+  // Prevent hydration mismatch by only rendering after mount
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--teal-start)] mx-auto mb-4"></div>
+          <p className="text-[var(--text-secondary)]">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -151,7 +154,7 @@ export default function GetStartedFlow() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative w-12 h-12 transform group-hover:scale-110 transition-transform duration-300">
+              <div className="relative w-24 h-24 transform group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src="/Learnwise Logo.png"
                   alt="Learnwise Technologies Logo"
@@ -160,9 +163,6 @@ export default function GetStartedFlow() {
                   priority
                 />
               </div>
-              <span className="text-xl font-bold text-[var(--primary-navy)]">
-                Learnwise Technologies
-              </span>
             </Link>
             <Link
               href="/"

@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { Building, GraduationCap, User, Users } from 'lucide-react';
-import { OnboardingData } from '../GetStartedFlow';
+import { OnboardingData } from '@/types/onboarding';
 
 interface UserTypeSelectionProps {
   data: OnboardingData;

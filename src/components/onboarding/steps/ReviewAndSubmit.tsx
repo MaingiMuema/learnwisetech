@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { CheckCircle, User, Building, Package, Loader2 } from 'lucide-react';
-import { OnboardingData } from '../GetStartedFlow';
+import { OnboardingData } from '@/types/onboarding';
 import { useRouter } from 'next/navigation';
 
 interface ReviewAndSubmitProps {

@@ -1,7 +1,7 @@
 'use client';
 
 import { Building, MapPin, Users, Globe } from 'lucide-react';
-import { OnboardingData } from '../GetStartedFlow';
+import { OnboardingData } from '@/types/onboarding';
 
 interface OrganizationDetailsProps {
   data: OnboardingData;

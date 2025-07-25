@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { Users, FileText, Calendar, Shield, BookOpen, Star, ExternalLink } from 'lucide-react';
-import { OnboardingData } from '../GetStartedFlow';
+import { OnboardingData } from '@/types/onboarding';
 
 interface ProductSelectionProps {
   data: OnboardingData;
