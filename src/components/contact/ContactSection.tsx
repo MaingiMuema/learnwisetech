@@ -10,12 +10,7 @@ export default function ContactSection() {
   };
 
   const handleScheduleDemoClick = () => {
-    // For now, scroll to contact section or could open a modal
-    // In the future, this could link to a scheduling system
-    const contactElement = document.getElementById('contact');
-    if (contactElement) {
-      contactElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    router.push('/schedule-demo');
   };
 
   return (
